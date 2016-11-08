@@ -35,6 +35,7 @@ var SnackbarAndroid = {
     message: string,
     options: {
       duration: number,
+      maxLines: number,
       actionColor: string,
       actionLabel: string,
       actionCallback: Function,
@@ -72,6 +73,7 @@ var SnackbarAndroid = {
     this.snackbar = NativeSnackbar.show(
       message,
       options.duration,
+      (options.maxLines || 1),
       hideOnClick,
       color,
       label,

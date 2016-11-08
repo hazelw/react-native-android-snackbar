@@ -112,7 +112,7 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void show(String message, final int length, boolean hideOnClick, int actionColor, String actionLabel, final Callback actionCallback) {
+  public void show(String message, final int length, final int maxLines, boolean hideOnClick, int actionColor, String actionLabel, final Callback actionCallback) {
     final Activity activity = getCurrentActivity();
 
     if (activity == null) return;
@@ -160,6 +160,7 @@ public class ReactSnackbarModule extends ReactContextBaseJavaModule {
     snackbarView.setBackgroundColor(COLOR_BACKGROUND);
     TextView textView = (TextView) snackbarView.findViewById(R.id.snackbar_text);
     textView.setTextColor(COLOR_TEXT);
+    textView.setMaxLines(maxLines);
 
     // Add a state change listener for firing EVENT_SHOW
     snackbarView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
